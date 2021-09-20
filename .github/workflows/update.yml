@@ -13,6 +13,7 @@ jobs:
     env:
       REMIX_TOKEN: ${{ secrets.REMIX_TOKEN }}
       REMIX_VERSION: ${{ github.event.inputs.version }}
+      WORKFLOW_URL: "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
     steps:
       - name: 🔧  Set up Node
         uses: actions/setup-node@v1
@@ -37,8 +38,8 @@ jobs:
         id: publish
         with:
           title: New remix-sandbox template published - version ${{ env.REMIX_VERSION }}
-          body: This pull request is created by the [update](https://github.com/edmundhung/remix-sandbox/actions/workflows/update.yml) workflow
-          commit-message: "chore: publish template for version $REMIX_VERSION"
+          body: This pull request is created by the [update workflow](${{ env.WORKFLOW_RUN }})
+          commit-message: "chore: publish template for version ${{ env.REMIX_VERSION }}"
           base: main
           branch: ${{ env.REMIX_VERSION }}
           delete-branch: false
