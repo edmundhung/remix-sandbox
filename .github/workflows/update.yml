@@ -10,6 +10,9 @@ jobs:
     name: 🏗  Generate template
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    env:
+      REMIX_TOKEN: ${{ secrets.REMIX_TOKEN }}
+      REMIX_VERSION: ${{ github.event.inputs.version }}
     steps:
       - name: 🔧  Set up Node
         uses: actions/setup-node@v1
@@ -23,9 +26,6 @@ jobs:
         run: find . -type f ! -path "./.git/*" ! -path "./.github/*" ! -path "./sandbox.config.json" ! -path "./LICENSE"  -print0 | xargs -0 rm
       - name: ✨  Bootstrap template
         run: npm install -g npm@7 && yes '' | npx create-remix --tag $REMIX_VERSION
-        env:
-          REMIX_TOKEN: ${{ secrets.REMIX_TOKEN }}
-          REMIX_VERSION: ${{ github.event.inputs.version }}
       - name: 🗂️  Reorganise template
         run: cp -r ./my-remix-app/. . && rm -rf ./my-remix-app
       - name: 📝  Update README
@@ -36,11 +36,13 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         id: publish
         with:
+          title: New remix-sandbox template published - version ${{ env.REMIX_VERSION }}
+          body: This pull request is created by the [update](https://github.com/edmundhung/remix-sandbox/actions/workflows/update.yml) workflow
+          commit-message: "chore: publish template for version $REMIX_VERSION"
           base: main
-          branch: ${{ github.event.inputs.version }}
+          branch: ${{ env.REMIX_VERSION }}
           delete-branch: false
-          title: New remix-sandbox template published - version ${{ github.event.inputs.version }}
       - name: 🎉  New template ready
         run: |
-          echo "Remix Version - ${{ github.event.inputs.version }}"
+          echo "Remix Version - ${{ env.REMIX_VERSION }}"
           echo "Pull Request URL - ${{ steps.publish.outputs.pull-request-url }}"
