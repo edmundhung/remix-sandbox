@@ -27,8 +27,7 @@ jobs:
           REMIX_TOKEN: ${{ secrets.REMIX_TOKEN }}
           REMIX_VERSION: ${{ github.event.inputs.version }}
       - name: 🗂️  Reorganise template
-        run: mv * .[^.]* ..
-        working-directory: ./my-remix-app
+        run: cp -r ./my-remix-app/. . && rm -rf ./my-remix-app
       - name: 📝  Update README
         run: echo "$(echo $MESSAGE; cat README.md)" > README.md
         env:
