@@ -1,4 +1,4 @@
-name: 🚢 Update template
+name: 🚢  Update template
 on:
   workflow_dispatch:
     inputs:
@@ -7,33 +7,33 @@ on:
         required: true
 jobs:
   generate:
-    name: 🏗 Generate template
+    name: 🏗  Generate template
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - name: 🔧 Set up Node
+      - name: 🔧  Set up Node
         uses: actions/setup-node@v1
         with:
           node-version: 14.x
-      - name: 🔍 Checkout code
+      - name: 🔍  Checkout code
         uses: actions/checkout@v2
         with:
           ref: main
-      - name: 🧹 Delete previous template
-        run: find . ! -path "./.git/*" ! -path "./.github/*" ! -path "./sandbox.config.json" ! -path "./LICENSE" -delete
-      - name: Bootstrap template
+      - name: 🧹  Delete previous template
+        run: find . -type f ! -path "./.git/*" ! -path "./.github/*" ! -path "./sandbox.config.json" ! -path "./LICENSE"  -print0 | xargs -0 rm
+      - name: ✨  Bootstrap template
         run: yes '' | npx create-remix --tag $REMIX_VERSION
         env:
           REMIX_TOKEN: ${{ secrets.REMIX_TOKEN }}
           REMIX_VERSION: ${{ github.event.inputs.version }}
-      - name: ✨ Setup template
+      - name: 🗂️  Reorganise template
         run: mv * .[^.]* ..
         working-directory: ./my-remix-app
-      - name: 📝 Update README
+      - name: 📝  Update README
         run: echo "$(echo $MESSAGE; cat README.md)" > README.md
         env:
           MESSAGE: "> This repository is a codesandbox template for [Remix](https://remix.run/) and supports Remix version starting from 0.17.1. For details, please check out the latest README [here](https://github.com/edmundhung/remix-sandbox/blob/main/.github/README.md)."
-      - name: 🔥 Publish template
+      - name: 🔥  Publish template
         uses: peter-evans/create-pull-request@v3
         id: publish
         with:
@@ -41,7 +41,7 @@ jobs:
           branch: ${{ github.event.inputs.version }}
           delete-branch: false
           title: New remix-sandbox template published - version ${{ github.event.inputs.version }}
-      - name: 🎉 New template ready
+      - name: 🎉  New template ready
         run: |
           echo "Remix Version - ${{ github.event.inputs.version }}"
           echo "Pull Request URL - ${{ steps.publish.outputs.pull-request-url }}"
