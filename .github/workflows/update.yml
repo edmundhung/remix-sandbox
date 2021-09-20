@@ -22,7 +22,7 @@ jobs:
       - name: 🧹  Delete previous template
         run: find . -type f ! -path "./.git/*" ! -path "./.github/*" ! -path "./sandbox.config.json" ! -path "./LICENSE"  -print0 | xargs -0 rm
       - name: ✨  Bootstrap template
-        run: yes '' | npx create-remix --tag $REMIX_VERSION
+        run: npm install -g npm@7 && yes '' | npx create-remix --tag $REMIX_VERSION
         env:
           REMIX_TOKEN: ${{ secrets.REMIX_TOKEN }}
           REMIX_VERSION: ${{ github.event.inputs.version }}
