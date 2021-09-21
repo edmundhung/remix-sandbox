@@ -19,6 +19,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: main
+          fetch-depth: 0
       - name: 💿  Check last template version
         run: echo "LAST_VERSION=$(git branch --sort=-committerdate --list '[0-9]*' | head -n 1 | xargs)" >> $GITHUB_ENV
       - name: 🔬  Check next release version
