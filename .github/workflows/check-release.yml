@@ -7,6 +7,8 @@ jobs:
   check:
     name: 📡  Regular checks
     runs-on: ubuntu-latest
+    env:
+      REMIX_TOKEN: ${{ secrets.REMIX_TOKEN }}
     steps:
       - name: 🔧  Set up Node
         uses: actions/setup-node@v1
