@@ -6,7 +6,7 @@ All the templates are bootstrapped using `npm init remix` with typescript setup 
 
 ## Required setup
 
-As most of the remix package is served from a private registry. Codesandbox cannot install the required packages without your `REMIX_TOKEN`. Here is how you can set it up:
+As most of the remix packages are served from a private NPM registry. Codesandbox cannot install the required packages without your `REMIX_TOKEN`. Here is how you can set it up:
 
 1. Look for the **server control panel** on the left sidebar. If you couldn't find it, you are properly not looking at your own sandbox. Fork it first.
 2. On the **Server Control Panel**, look for the **Secret Keys** section. Add a new secret with the name `REMIX_TOKEN` and put your license on the value field. Submit it by clicking **Add Secret**.
