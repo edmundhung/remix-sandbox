@@ -12,6 +12,11 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 14.x
+      # .git is missing without this step
+      - name: 🔍  Checkout code
+        uses: actions/checkout@v2
+        with:
+          ref: main
       - name: 💿  Check last template version
         run: echo "LAST_VERSION=$(git branch --sort=-committerdate --no-merged | head -n 1)" >> $GITHUB_ENV
       - name: 🔬  Check next release version
