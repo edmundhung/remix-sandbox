@@ -21,7 +21,7 @@ jobs:
           ref: main
           fetch-depth: 0
       - name: 💿  Check last template version
-        run: git fetch && echo "LAST_VERSION=$(git branch --sort=-committerdate --list '[0-9]*' | head -n 1 | xargs)" >> $GITHUB_ENV
+        run: echo "LAST_VERSION=$(git branch --remote --sort=-committerdate --list 'origin/[0-9]*' | head -n 1 | xargs)" >> $GITHUB_ENV
       - name: 🔬  Check next release version
         run: echo "REMIX_VERSION=$(npm info remix time --json | jq -r 'keys_unsorted | .[index("${{ env.LAST_VERSION }}") + 1] | select (.!=null)')" >> $GITHUB_ENV
       - name: 🚀  Invoke Update Template workflow
