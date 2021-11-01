@@ -26,7 +26,7 @@ jobs:
       - name: 🧹  Delete previous template
         run: find . -type f ! -path "./.git/*" ! -path "./.github/*" ! -path "./sandbox.config.json" ! -path "./LICENSE"  -print0 | xargs -0 rm
       - name: ✨  Bootstrap template
-        run: npx create-remix@$REMIX_VERSION
+        run: yes '' | npx create-remix@$REMIX_VERSION
       - name: 🗂️  Reorganise template
         run: cp -r ./my-remix-app/. . && rm -rf ./my-remix-app
       - name: 👻 Patch .npmrc
