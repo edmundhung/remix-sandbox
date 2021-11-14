@@ -29,10 +29,6 @@ jobs:
         run: yes '' | npx create-remix@$REMIX_VERSION
       - name: 🗂️  Reorganise template
         run: cp -r ./my-remix-app/. . && rm -rf ./my-remix-app
-      - name: 👻 Patch .npmrc
-        run: echo "$(echo $MESSAGE; cat .npmrc)" > .npmrc
-        env:
-          MESSAGE: "//npm.remix.run/:_authToken=${REMIX_TOKEN}"
       - name: 📝  Update README
         run: echo "$(echo $MESSAGE; cat README.md)" > README.md
         env:
