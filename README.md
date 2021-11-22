@@ -1,8 +1,7 @@
 > This repository is a codesandbox template for [Remix](https://remix.run/) and supports Remix version starting from 0.17.1. For details, please check out the latest README [here](https://github.com/edmundhung/remix-sandbox/blob/main/.github/README.md).
 # Welcome to Remix!
 
-- [Remix Docs](https://docs.remix.run)
-- [Customer Dashboard](https://remix.run/dashboard)
+- [Remix Docs](https://remix.run/docs)
 
 ## Development
 
