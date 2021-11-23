@@ -1,6 +1,9 @@
 # remix-sandbox
 
-This project is initiated to simply remove the hassle of setting up a Codesandbox or Stackblitz WebContainer running remix.
+This project is initiated to simply remove the hassle of setting up a sandbox on Codesandbox container sandbox or Stackblitz WebContainer running Remix.
+
+* Codesandbox - https://codesandbox.io/s/github/edmundhung/remix-sandbox
+* Stackblitz - https://stackblitz.com/github/edmundhung/remix-sandbox
 
 All the templates are bootstrapped using `npm init remix` with typescript setup and using Remix App Server as the deployment target at the moment.
 
@@ -10,8 +13,8 @@ We published each template using the remix version as the branch name. The suppo
 
 If you would like to kickstart a sandbox with a specific remix version, you can specify it as follow:
 
-- Codesandbox: `https://codesandbox.io/s/github/edmundhung/remix-sandbox/:version`
-- Stackblitz WebContainer: `https://stackblitz.com/github/edmundhung/remix-sandbox/tree/:version`
+- Codesandbox - `https://codesandbox.io/s/github/edmundhung/remix-sandbox/:version`
+- Stackblitz WebContainer - `https://stackblitz.com/github/edmundhung/remix-sandbox/tree/:version`
 
 ## Required setup
 
