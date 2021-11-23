@@ -1,10 +1,21 @@
 # remix-sandbox
 
-This project is initiated to simply remove the hassle of setting up a codesandbox running remix.
+This project is initiated to simply remove the hassle of setting up a Codesandbox or Stackblitz WebContainer running remix.
 
 All the templates are bootstrapped using `npm init remix` with typescript setup and using Remix App Server as the deployment target at the moment.
 
+## Specifying remix version
+
+We published each template using the remix version as the branch name. The supported versions are listed here: [List all branches](https://github.com/edmundhung/remix-sandbox/branches/all)
+
+If you would like to kickstart a sandbox with a specific remix version, you can specify it as follow:
+
+- Codesandbox: `https://codesandbox.io/s/github/edmundhung/remix-sandbox/:version`
+- Stackblitz WebContainer: `https://stackblitz.com/github/edmundhung/remix-sandbox/tree/:version`
+
 ## Required setup
+
+> This setup is required only for versions before v1 as everything is now published to NPM and available to everyone
 
 As most of the remix packages are served from a private NPM registry. Codesandbox cannot install the required packages without your `REMIX_TOKEN`. Here is how you can set it up:
 
@@ -12,14 +23,6 @@ As most of the remix packages are served from a private NPM registry. Codesandbo
 2. On the **Server Control Panel**, look for the **Secret Keys** section. Add a new secret with the name `REMIX_TOKEN` and put your license on the value field. Submit it by clicking **Add Secret**.
 3. On the **Terminal** view, add a new terminal by clicking `+`. Type `npm ci` or `npm install` and close the terminal when the installation complete
 4. Finally, back to the **Server Control Panel**, look for the **Control Container** section. Click `Restart Server`. Wait for the terminal to kickstart the dev server again. Refresh the browser view and you should see Remix running!
-
-
-
-## Specifying remix version
-
-We published each template using the remix version as the branch name. If you would like to kickstart a sandbox with a specific remix version, you can specify it in this format `https://codesandbox.io/s/github/edmundhung/remix-sandbox/:version`.
-
-The supported versions are listed here: [List all branches](https://github.com/edmundhung/remix-sandbox/branches/all)
 
 ## FAQ
 

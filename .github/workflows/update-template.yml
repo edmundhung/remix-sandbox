@@ -24,7 +24,7 @@ jobs:
         with:
           ref: main
       - name: 🧹  Delete previous template
-        run: find . -type f ! -path "./.git/*" ! -path "./.github/*" ! -path "./sandbox.config.json" ! -path "./LICENSE"  -print0 | xargs -0 rm
+        run: find . -type f ! -path "./.git/*" ! -path "./.github/*" ! -path "./sandbox.config.json" ! -path "./.stackblitzrc" ! -path "./LICENSE"  -print0 | xargs -0 rm
       - name: ✨  Bootstrap template
         run: yes '' | npx create-remix@$REMIX_VERSION
       - name: 🗂️  Reorganise template
